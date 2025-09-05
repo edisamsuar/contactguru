@@ -1,0 +1,1349 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portofolio Kontak Person</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family:
+        }
+
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
+            color: #333;
+            line-height: 1.6;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        header {
+            background: linear-gradient(to right, #0d5e37, #1a7d4e);
+            color: white;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            position: relative;
+            z-index: 100;
+            font-family: 'Times New Roman', Times, serif;
+            margin-bottom: 50px;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo {
+            height: 60px;
+            margin-right: 15px;
+        }
+
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logo-text h1 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            line-height: 1.2;
+        }
+
+        .logo-text p {
+            font-size: 0.8rem;
+            opacity: 0.9;
+        }
+
+        /* Navigation */
+        .navigasi ul {
+            display: flex;
+            list-style: none;
+        }
+
+        .navigasi ul li {
+            margin-left: 5px;
+            position: relative;
+        }
+
+        .navigasi ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 10px 12px;
+            display: block;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+            border-radius: 4px;
+        }
+
+        .navigasi ul li a:hover {
+            color: #ffd700;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .navigasi ul li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: #ffd700;
+            transition: width 0.3s ease;
+        }
+
+        .navigasi ul li a:hover::after {
+            width: 100%;
+        }
+
+        .cta-button {
+            background-color: #ffd700;
+            color: #0d5e37 !important;
+            font-weight: 600 !important;
+            border-radius: 50px;
+            padding: 10px 20px !important;
+            margin-left: 10px;
+        }
+
+        .cta-button:hover {
+            background-color: #fff;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+        }
+
+        /* Slideshow */
+        .slideshow-container {
+            position: relative;
+            height: 500px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .slide {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 1.5s ease;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .slide.active {
+            opacity: 1;
+        }
+
+        .slide-overlay {
+            background: rgba(0, 0, 0, 0.6);
+            color: white;
+            text-align: center;
+            padding: 30px;
+            border-radius: 10px;
+            max-width: 80%;
+            backdrop-filter: blur(5px);
+        }
+
+        .slide-overlay h2 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+        }
+
+        .slide-overlay p {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            max-width: 700px;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: #1a7d4e;
+            color: white;
+            padding: 12px 25px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #ffd700;
+            color: #333;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Islamic Pattern */
+        .islamic-pattern {
+            height: 20px;
+            background-image:
+                repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(255, 215, 0, 0.3) 10px, rgba(255, 215, 0, 0.3) 20px),
+                repeating-linear-gradient(-45deg, transparent, transparent 10px, rgba(13, 94, 55, 0.3) 10px, rgba(13, 94, 55, 0.3) 20px);
+        }
+
+        /* Content */
+        .content {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+            text-align: center;
+        }
+
+        .content h2 {
+            color: #1a7d4e;
+            font-size: 2rem;
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .content h2::after {
+            content: '';
+            position: absolute;
+            width: 50%;
+            height: 3px;
+            background: linear-gradient(to right, transparent, #1a7d4e, transparent);
+            bottom: -10px;
+            left: 25%;
+        }
+
+        .content p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Responsive Styles */
+        @media screen and (max-width: 1100px) {
+            .navigasi ul li a {
+                padding: 10px 8px;
+                font-size: 0.85rem;
+            }
+        }
+
+        @media screen and (max-width: 900px) {
+            .navigasi ul {
+                position: fixed;
+                top: 90px;
+                left: -100%;
+                background: linear-gradient(to right, #0d5e37, #1a7d4e);
+                width: 100%;
+                height: calc(100vh - 90px);
+                flex-direction: column;
+                align-items: center;
+                justify-content: flex-start;
+                padding-top: 40px;
+                transition: left 0.3s ease;
+                z-index: 99;
+                overflow-y: auto;
+            }
+
+            .navigasi ul li {
+                margin: 12px 0;
+                width: 100%;
+                text-align: center;
+            }
+
+            .navigasi ul li a {
+                font-size: 1.1rem;
+                padding: 15px;
+                margin: 0 20px;
+                border-radius: 5px;
+            }
+
+            .cta-button {
+                margin-top: 20px;
+                margin-left: 0;
+            }
+
+            .navigasi ul.active {
+                left: 0;
+            }
+
+            .hamburger {
+                display: block;
+            }
+
+            .slide-overlay h2 {
+                font-size: 2rem;
+            }
+
+            .slide-overlay p {
+                font-size: 1rem;
+            }
+
+            .logo-text h1 {
+                font-size: 1.2rem;
+            }
+        }
+
+        @media screen and (max-width: 600px) {
+            header {
+                padding: 15px 4%;
+            }
+
+            .logo {
+                height: 50px;
+            }
+
+            .slideshow-container {
+                height: 400px;
+            }
+
+            .slide-overlay {
+                padding: 20px;
+            }
+
+            .slide-overlay h2 {
+                font-size: 1.6rem;
+            }
+
+            .btn {
+                padding: 10px 20px;
+            }
+
+            .content h2 {
+                font-size: 1.6rem;
+            }
+
+            .content p {
+                font-size: 1rem;
+            }
+
+            .logo-text h1 {
+                font-size: 1rem;
+            }
+
+            .logo-text p {
+                font-size: 0.7rem;
+            }
+        }
+
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 35px;
+            margin-bottom: 50px;
+        }
+
+        .person-card {
+            background: white;
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            height: auto;
+            min-height: 520px;
+        }
+
+        .person-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+        }
+
+        .profile-img-container {
+            position: relative;
+            width: 100%;
+            height: 280px;
+            overflow: hidden;
+        }
+
+        .profile-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .person-card:hover .profile-img {
+            transform: scale(1.05);
+        }
+
+        .person-info {
+            padding: 25px;
+            flex-grow: 1;
+        }
+
+        .person-info h2 {
+            color: #2c3e50;
+            margin-bottom: 8px;
+            font-size: 1.7rem;
+            font-weight: 700;
+        }
+
+        .person-info .position {
+            color: #6a11cb;
+            font-weight: 600;
+            margin-bottom: 18px;
+            font-size: 1.1rem;
+            padding-bottom: 12px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .contact-info {
+            padding: 0 25px 25px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            color: #555;
+            font-size: 1.05rem;
+        }
+
+        .contact-item i {
+            width: 28px;
+            margin-right: 15px;
+            color: #6a11cb;
+            font-size: 1.2rem;
+        }
+
+        /* WhatsApp khusus */
+        .whatsapp-contact {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 30px;
+            margin-top: 15px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            width: 100%;
+            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
+        }
+
+        .whatsapp-contact:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 16px rgba(37, 211, 102, 0.4);
+        }
+
+        .whatsapp-contact i {
+            margin-right: 10px;
+            font-size: 1.4rem;
+            color: white;
+        }
+
+
+
+        .filters {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .filter-btn {
+            background: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 600;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .filter-btn.active,
+        .filter-btn:hover {
+            background: #6a11cb;
+            color: white;
+        }
+
+        @media (max-width: 1100px) {
+            .team-grid {
+                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+                gap: 30px;
+            }
+        }
+
+        @media (max-width: 768px) {
+
+            .team-grid {
+                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+                gap: 25px;
+            }
+
+            .profile-img-container {
+                height: 250px;
+            }
+
+            .person-card {
+                min-height: 480px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .body-ctn {
+                padding: 15px;
+            }
+
+
+
+            .team-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .profile-img-container {
+                height: 230px;
+            }
+
+            .person-card {
+                min-height: auto;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="logo-container">
+            <a href="https://madinatuddiniyahbabussalam.dayah.id"> <img
+                    src="https://madinatuddiniyahbabussalam.dayah.id/media/2021.09/logo-dyah21.png"
+                    alt="Logo Dayah Madinatuddiniyah Babussalam" class="logo"> </a>
+            <div class="logo-text">
+                <h1>DAYAH MADINATUDDINIYAH BABUSSALAM</h1>
+                <p>مدينة الدينية باب السلام</p>
+            </div>
+        </div>
+
+        <nav class="navigasi">
+            <div class="hamburger" id="hamburger">
+                <i class="fas fa-bars"></i>
+            </div>
+            <ul id="nav-menu">
+                <li><a href="https://madinatuddiniyahbabussalam.dayah.id"><i class="fas fa-home"></i> Beranda</a></li>
+                <li><a href="#"><i class="fas fa-info-circle"></i> Tentang</a></li>
+                <li><a href="/halaman/syarat-pendaftaran"><i class="fas fa-file-alt"></i> Syarat Pendaftaran</a></li>
+                <li><a href="/halaman/biaya-administrasi"><i class="fas fa-money-bill-wave"></i> Biaya Administrasi</a>
+                </li>
+                <li><a href="/halaman/visi-misi-pesantren-madinatuddiniyah-babussalam"><i class="fas fa-eye"></i> Visi &
+                        Misi</a></li>
+                <li><a href="/pejabat"><i class="fas fa-sitemap"></i> Organisasi</a></li>
+
+                <li><a href="#"><i class="fas fa-phone"></i> Kontak</a></li>
+                <li><a href="https://forms.gle/BUomjx8dG4u8FQks5" class="cta-button"><i class="fas fa-user-plus"></i>
+                        Daftar Sekarang</a></li>
+            </ul>
+        </nav>
+
+    </header>
+    <div class="body-ctn">
+        <div class="container">
+
+            <div class="team-grid">
+                <!-- Person 1 -->
+                <div class="person-card">
+                    <div class="profile-img-container">
+                        <img src="Tgk-Munazir.jpg" alt="Tgk Lhoknibong" class="profile-img">
+                    </div>
+                    <div class="person-info">
+                        <h2>Tgk Munazir</h2>
+                        <p class="position">Ketua Umum</p>
+                    </div>
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <i class="fas fa-chalkboard-teacher"></i>
+                            <span>Mengajar di kelas: <b> </b></span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <span>+62 853 2156 3387</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class=""></i>
+                            <span></span>
+                        </div>
+                        <a href="https://wa.me/6285321563387" class="whatsapp-contact">
+                            <i class="fab fa-whatsapp"></i>
+                            Hubungi via WhatsApp
+                        </a>
+                    </div>
+                </div>
+
+                <div class="person-card">
+                    <div class="profile-img-container">
+                        <img src="tgk-arief.jpg" alt="Gambar Tgk Arief" class="profile-img">
+                    </div>
+                    <div class="person-info">
+                        <h2>Tgk M. Arief Fazillah</h2>
+                        <p class="position">Ketua Pendidikan</p>
+                    </div>
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <i class="fas fa-chalkboard-teacher"></i>
+                            <span>Mengajar di kelas: <b> </b></span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <span>+62 852 8258 0558</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class=""></i>
+                            <span></span>
+                        </div>
+                        <a href="https://wa.me/6285282580557" class="whatsapp-contact">
+                            <i class="fab fa-whatsapp"></i>
+                            Hubungi via WhatsApp
+                        </a>
+                    </div>
+                </div>
+
+
+                <div class="person-card">
+                    <div class="profile-img-container">
+                        <img src="Untitled-1.jpg" alt="Gambar Tgk Edi Samsuar" class="profile-img">
+                    </div>
+                    <div class="person-info">
+                        <h2>Tgk Edi Samsuar</h2>
+                        <p class="position">Operator & Sekretariat</p>
+                    </div>
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <i class="fas fa-chalkboard-teacher"></i>
+                            <span>Mengajar di kelas: <b>1A</b></span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <span>+62 822 1750 2205</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class=""></i>
+                            <span></span>
+                        </div>
+                        <a href="https://wa.me/6282217502205" class="whatsapp-contact">
+                            <i class="fab fa-whatsapp"></i>
+                            Hubungi via WhatsApp
+                        </a>
+                    </div>
+                </div>
+
+
+
+                <div class="person-card">
+                    <div class="profile-img-container">
+                        <img src="icon.jpg" alt="Foto Tgk Ahyar" class="profile-img">
+                    </div>
+                    <div class="person-info">
+                        <h2>Tgk Ahyar Rizki</h2>
+                        <p class="position">Ketua Keamanan</p>
+                    </div>
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <i class="fas fa-chalkboard-teacher"></i>
+                            <span>Mengajar di kelas: <b></b></span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <span>+62 822 1349 0153</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class=""></i>
+                            <span></span>
+                        </div>
+                        <a href="https://wa.me/6282213490153" class="whatsapp-contact">
+                            <i class="fab fa-whatsapp"></i>
+                            Hubungi via WhatsApp
+                        </a>
+                    </div>
+                </div>
+
+
+
+                <div class="person-card">
+                    <div class="profile-img-container">
+                        <img src="icon.jpg" alt="Foto Tgk Ahyar" class="profile-img">
+                    </div>
+                    <div class="person-info">
+                        <h2>Tgk Miftahul Fauzi</h2>
+                        <p class="position">Ketua Catering</p>
+                    </div>
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <i class="fas fa-chalkboard-teacher"></i>
+                            <span>Mengajar di kelas: <b></b></span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <span>+62 822 7986 4041</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class=""></i>
+                            <span></span>
+                        </div>
+                        <a href="https://wa.me/+6282279864041" class="whatsapp-contact">
+                            <i class="fab fa-whatsapp"></i>
+                            Hubungi via WhatsApp
+                        </a>
+                    </div>
+                </div>
+
+
+                <div class="person-card">
+                    <div class="profile-img-container">
+                        <img src="icon.jpg" alt="Foto dewan gurur" class="profile-img">
+                    </div>
+                    <div class="person-info">
+                        <h2>Teungku Peu Ulang</h2>
+                        <p class="position">Dewan Guru</p>
+                    </div>
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <i class="fas fa-chalkboard-teacher"></i>
+                            <span>Mengajar di kelas: <b></b></span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <span>+62 822 7986 4041</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class=""></i>
+                            <span></span>
+                        </div>
+                        <a href="https://wa.me/+62824568" class="whatsapp-contact">
+                            <i class="fab fa-whatsapp"></i>
+                            Hubungi via WhatsApp
+                        </a>
+                    </div>
+                </div>
+
+
+
+                <div class="person-card">
+                    <div class="profile-img-container">
+                        <img src="icon.jpg" alt="Foto dewan gurur" class="profile-img">
+                    </div>
+                    <div class="person-info">
+                        <h2>Teungku Peu Ulang</h2>
+                        <p class="position">Dewan Guru</p>
+                    </div>
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <i class="fas fa-chalkboard-teacher"></i>
+                            <span>Mengajar di kelas: <b></b></span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <span>+62 822 7986 4041</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class=""></i>
+                            <span></span>
+                        </div>
+                        <a href="https://wa.me/+62824568" class="whatsapp-contact">
+                            <i class="fab fa-whatsapp"></i>
+                            Hubungi via WhatsApp
+                        </a>
+                    </div>
+                </div>
+
+
+                <div class="person-card">
+                    <div class="profile-img-container">
+                        <img src="icon.jpg" alt="Foto dewan gurur" class="profile-img">
+                    </div>
+                    <div class="person-info">
+                        <h2>Teungku Peu Ulang</h2>
+                        <p class="position">Dewan Guru</p>
+                    </div>
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <i class="fas fa-chalkboard-teacher"></i>
+                            <span>Mengajar di kelas: <b></b></span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <span>+62 822 7986 4041</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class=""></i>
+                            <span></span>
+                        </div>
+                        <a href="https://wa.me/+62824568" class="whatsapp-contact">
+                            <i class="fab fa-whatsapp"></i>
+                            Hubungi via WhatsApp
+                        </a>
+                    </div>
+                </div>
+
+
+                <div class="person-card">
+                    <div class="profile-img-container">
+                        <img src="icon.jpg" alt="Foto dewan gurur" class="profile-img">
+                    </div>
+                    <div class="person-info">
+                        <h2>Teungku Peu Ulang</h2>
+                        <p class="position">Dewan Guru</p>
+                    </div>
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <i class="fas fa-chalkboard-teacher"></i>
+                            <span>Mengajar di kelas: <b></b></span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <span>+62 822 7986 4041</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class=""></i>
+                            <span></span>
+                        </div>
+                        <a href="https://wa.me/+62824568" class="whatsapp-contact">
+                            <i class="fab fa-whatsapp"></i>
+                            Hubungi via WhatsApp
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <!DOCTYPE html>
+        <html lang="id">
+
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Footer Dayah Madinatuddiniyah Babussalam</title>
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+            <style>
+                * {
+                    margin: 0;
+                    padding: 0;
+                    box-sizing: border-box;
+                    font-family:'Times New Roman', Times, serif
+                }
+
+                body {
+                    background-color: #f8f9fa;
+                    min-height: 100vh;
+                    display: flex;
+                    flex-direction: column;
+                    color: #333;
+                }
+
+                .content {
+                    flex: 1;
+                    padding: 2rem;
+                    text-align: center;
+                    max-width: 1200px;
+                    margin: 0 auto;
+                }
+
+                .content h1 {
+                    color: #0d452f;
+                    margin-bottom: 1rem;
+                    font-size: 2.2rem;
+                }
+
+                .content p {
+                    font-size: 1.1rem;
+                    line-height: 1.6;
+                    color: #555;
+                }
+
+                footer {
+                    background: linear-gradient(to right, #0d452f, #1a7356);
+                    color: #fff;
+                    padding: 50px 0 0;
+                    margin-top: auto;
+                    position: relative;
+                    overflow: hidden;
+                }
+
+                footer::before {
+                    content: '';
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    right: 0;
+                    height: 4px;
+                    background: linear-gradient(to right, #d4af37, #f5e9c4, #d4af37);
+                }
+
+                .footer-container {
+                    max-width: 1200px;
+                    margin: 0 auto;
+                    padding: 0 20px;
+                    display: flex;
+                    flex-wrap: wrap;
+                    justify-content: space-between;
+                }
+
+                .footer-section {
+                    flex: 1;
+                    min-width: 250px;
+                    margin-bottom: 30px;
+                    padding: 0 15px;
+                }
+
+                .footer-section h3 {
+                    font-size: 1.4rem;
+                    margin-bottom: 20px;
+                    position: relative;
+                    padding-bottom: 10px;
+                    font-weight: 600;
+                }
+
+                .footer-section h3::after {
+                    content: '';
+                    position: absolute;
+                    bottom: 0;
+                    left: 0;
+                    width: 50px;
+                    height: 3px;
+                    background-color: #d4af37;
+                    border-radius: 3px;
+                }
+
+                .footer-about p {
+                    line-height: 1.6;
+                    margin-bottom: 15px;
+                    text-align: justify;
+                    font-size: 0.95rem;
+                }
+
+                .footer-links ul {
+                    list-style: none;
+                }
+
+                .footer-links ul li {
+                    margin-bottom: 12px;
+                }
+
+                .footer-links ul li a {
+                    color: #e6e6e6;
+                    text-decoration: none;
+                    transition: all 0.3s ease;
+                    display: flex;
+                    align-items: center;
+                    font-size: 0.95rem;
+                }
+
+                .footer-links ul li a i {
+                    margin-right: 8px;
+                    color: #d4af37;
+                    font-size: 0.8rem;
+                }
+
+                .footer-links ul li a:hover {
+                    color: #d4af37;
+                    padding-left: 5px;
+                }
+
+                .footer-contact p {
+                    display: flex;
+                    align-items: flex-start;
+                    margin-bottom: 15px;
+                    font-size: 0.95rem;
+                }
+
+                .footer-contact i {
+                    margin-right: 10px;
+                    color: #d4af37;
+                    margin-top: 5px;
+                    min-width: 16px;
+                }
+
+                .footer-social {
+                    display: flex;
+                    gap: 12px;
+                    margin-top: 20px;
+                }
+
+                .footer-social a {
+                    display: inline-flex;
+                    align-items: center;
+                    justify-content: center;
+                    width: 38px;
+                    height: 38px;
+                    background-color: rgba(255, 255, 255, 0.1);
+                    border-radius: 50%;
+                    color: #fff;
+                    transition: all 0.3s ease;
+                }
+
+                .footer-social a:hover {
+                    background-color: #d4af37;
+                    transform: translateY(-3px);
+                }
+
+                .footer-newsletter p {
+                    margin-bottom: 15px;
+                    font-size: 0.95rem;
+                    line-height: 1.5;
+                }
+
+                .footer-newsletter form {
+                    display: flex;
+                    flex-direction: column;
+                }
+
+                .footer-newsletter input {
+                    width: 100%;
+                    padding: 12px 15px;
+                    margin-bottom: 12px;
+                    border: none;
+                    border-radius: 4px;
+                    background-color: rgba(255, 255, 255, 0.15);
+                    color: #fff;
+                    outline: none;
+                }
+
+                .footer-newsletter input::placeholder {
+                    color: #ddd;
+                }
+
+                .footer-newsletter button {
+                    background-color: #d4af37;
+                    color: #0d452f;
+                    border: none;
+                    padding: 12px 20px;
+                    border-radius: 4px;
+                    cursor: pointer;
+                    font-weight: 600;
+                    transition: all 0.3s ease;
+                }
+
+                .footer-newsletter button:hover {
+                    background-color: #c19d2a;
+                }
+
+                .footer-bottom {
+                    background-color: rgba(0, 0, 0, 0.25);
+                    padding: 20px 0;
+                    text-align: center;
+                    margin-top: 40px;
+                }
+
+                .footer-bottom p {
+                    font-size: 0.9rem;
+                    color: #e6e6e6;
+                }
+
+                .footer-credit {
+                    color: #d4af37;
+                    font-weight: 600;
+                }
+
+                .logo-area {
+                    display: flex;
+                    align-items: center;
+                    margin-bottom: 20px;
+                }
+
+                .logo-img {
+                    width: 60px;
+                    height: 60px;
+                    margin-right: 12px;
+                    background-color: #fff;
+                    border-radius: 50%;
+                    padding: 5px;
+                    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+                }
+
+                .logo-text {
+                    font-size: 1.5rem;
+                    font-weight: 700;
+                    color: #fff;
+                    line-height: 1.2;
+                }
+
+                .logo-subtext {
+                    display: block;
+                    font-size: 0.9rem;
+                    color: #d4af37;
+                    font-weight: 500;
+                }
+
+                /* .islamic-pattern {
+            height: 20px;
+            background: repeating-linear-gradient(45deg, transparent, transparent 5px, rgba(212, 175, 55, 0.2) 5px, rgba(212, 175, 55, 0.2) 10px);
+            margin-bottom: 20px;
+        } */
+
+                /* Responsive styles */
+                @media (max-width: 992px) {
+                    .footer-section {
+                        flex: 0 0 50%;
+                    }
+
+                    .logo-text {
+                        font-size: 1.3rem;
+                    }
+                }
+
+                @media (max-width: 768px) {
+                    .footer-container {
+                        flex-direction: column;
+                    }
+
+                    .footer-section {
+                        flex: 0 0 100%;
+                        padding: 0 10px;
+                    }
+
+                    .logo-area {
+                        justify-content: center;
+                        text-align: center;
+                        flex-direction: column;
+                    }
+
+                    .logo-img {
+                        margin-right: 0;
+                        margin-bottom: 10px;
+                    }
+
+                    .footer-newsletter form {
+                        flex-direction: row;
+                    }
+
+                    .footer-newsletter input {
+                        margin-bottom: 0;
+                        margin-right: 10px;
+                        flex: 1;
+                    }
+                }
+
+                @media (max-width: 576px) {
+                    .footer-newsletter form {
+                        flex-direction: column;
+                    }
+
+                    .footer-newsletter input {
+                        margin-bottom: 10px;
+                        margin-right: 0;
+                    }
+
+                    .content h1 {
+                        font-size: 1.8rem;
+                    }
+
+                    .content p {
+                        font-size: 1rem;
+                    }
+                }
+
+                .back-to-top {
+                    position: absolute;
+                    right: 30px;
+                    top: -20px;
+                    background-color: #d4af37;
+                    width: 40px;
+                    height: 40px;
+                    border-radius: 50%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    color: #0d452f;
+                    font-size: 1.2rem;
+                    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+                    transition: all 0.3s ease;
+                }
+
+                .back-to-top:hover {
+                    transform: translateY(-3px);
+                    background-color: #c19d2a;
+                }
+            </style>
+        </head>
+
+        <footer>
+            <a href="#" class="back-to-top">
+                <i class="fas fa-arrow-up"></i>
+            </a>
+
+            <div class="footer-container">
+                <div class="footer-section footer-about">
+                    <div class="logo-area">
+                        <div class="logo-img">
+                            <img src="https://madinatuddiniyahbabussalam.dayah.id/media/2021.09/logo-dyah21.png"
+                                alt="Logo Dayah" style="width:100%; height:100%; object-fit:contain;">
+                        </div>
+                        <div class="logo-text">
+                            Dayah Madinatuddiniyah<span class="logo-subtext">Babussalam</span>
+                        </div>
+                    </div>
+                    <p>Design by Ust. Edi Samsuar.</p>
+                    <div class="footer-social">
+                        <a href="https://web.facebook.com/MDBBSPONDOKBARU" title="Facebook"><i
+                                class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/_mdbbs/" title="Instagram"><i
+                                class="fab fa-instagram"></i></a>
+                        <a href="https://www.youtube.com/@dyhmadinatuddiniyahbabussalam" title="YouTube"><i
+                                class="fab fa-youtube"></i></a>
+                        <a href="https://api.whatsapp.com/send/?phone=6282217502205&text=Assalamu%27alaikum&type=phone_number&app_absent=0"
+                            title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-section footer-links">
+                    <h3>Tautan Cepat</h3>
+                    <ul>
+                        <li><a href="https://madinatuddiniyahbabussalam.dayah.id"><i class="fas fa-home"></i>
+                                Beranda</a></li>
+                        <li><a href="#"><i class="fas fa-info-circle"></i> Tentang Kami</a></li>
+                        <li><a href="#"><i class="fas fa-book-open"></i> Program Pendidikan</a></li>
+                        <li><a href="#"><i class="fas fa-calendar-alt"></i> Kegiatan Santri</a></li>
+                        <li><a href="https://madinatuddiniyahbabussalam.dayah.id/galeri/gambar"><i
+                                    class="fas fa-images"></i> Galeri</a></li>
+                        <li><a href="https://madinatuddiniyahbabussalam.dayah.id/pejabat"><i
+                                    class="fas fa-envelope"></i> Kontak</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section footer-contact">
+                    <h3>Kontak Kami</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Jln. Pesantren Kp. Puja Mulia Kec. Bandar Kab. Bener Meriah
+                        Prov. Aceh 24582</p>
+                    <p><i class="fas fa-phone"></i> +62 822 1750 2205</p>
+                    <p><i class="fas fa-envelope"></i> info@dayahbabussalam.ac.id</p>
+                    <p><i class="fas fa-clock"></i> Senin - Jumat: 08:00 - 16:00</p>
+                </div>
+
+
+                <div class="footer-bottom">
+                    <p>&copy; 2025 Dayah Madinatuddiniyah Babussalam. All Rights Reserved. | <span
+                            class="footer-credit">Berilmu, Beramal, Berakhlak Mulia</span></p>
+                </div>
+        </footer>
+
+        <script>
+            // Smooth scrolling for back to top button
+            document.querySelector('.back-to-top').addEventListener('click', function (e) {
+                e.preventDefault();
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+
+            // Show/hide back to top button based on scroll position
+            window.addEventListener('scroll', function () {
+                const backToTop = document.querySelector('.back-to-top');
+                if (window.scrollY > 300) {
+                    backToTop.style.display = 'flex';
+                } else {
+                    backToTop.style.display = 'none';
+                }
+            });
+        </script>
+</body>
+
+</html>
+</footer>
+
+<script>
+    function search(query) {
+        console.log(query);
+        if (query.slice(0, 8) == "https://") {
+            window.open(query, "_blank");
+        }
+        else {
+            window.open("https://www.google.com/search?q=" + query + "+site%3A" + window.location.hostname, "_blank");
+        }
+    }
+
+    // Hamburger Menu Toggle
+    const hamburger = document.getElementById('hamburger');
+    const navMenu = document.getElementById('nav-menu');
+
+    hamburger.addEventListener('click', () => {
+        navMenu.classList.toggle('active');
+
+        // Mengubah ikon saat menu aktif
+        const icon = hamburger.querySelector('i');
+        if (navMenu.classList.contains('active')) {
+            icon.classList.remove('fa-bars');
+            icon.classList.add('fa-times');
+        } else {
+            icon.classList.remove('fa-times');
+            icon.classList.add('fa-bars');
+        }
+    });
+
+    // Slideshow Functionality
+    const slides = document.querySelectorAll('.slide');
+    let currentSlide = 0;
+
+    function showSlide(n) {
+        slides.forEach(slide => slide.classList.remove('active'));
+        currentSlide = (n + slides.length) % slides.length;
+        slides[currentSlide].classList.add('active');
+    }
+
+    function nextSlide() {
+        showSlide(currentSlide + 1);
+    }
+
+    // Auto advance slides every 5 seconds
+    setInterval(nextSlide, 5000);
+
+    // Close menu when clicking outside on mobile
+    document.addEventListener('click', (e) => {
+        if (navMenu.classList.contains('active') &&
+            !e.target.closest('#nav-menu') &&
+            !e.target.closest('#hamburger')) {
+            navMenu.classList.remove('active');
+            const icon = hamburger.querySelector('i');
+            icon.classList.remove('fa-times');
+            icon.classList.add('fa-bars');
+        }
+    });
+    // Simple filter functionality for demonstration
+    document.addEventListener('DOMContentLoaded', function () {
+        const filterButtons = document.querySelectorAll('.filter-btn');
+
+        filterButtons.forEach(button => {
+            button.addEventListener('click', function () {
+                // Remove active class from all buttons
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+
+                // Add active class to clicked button
+                this.classList.add('active');
+
+                // In a real implementation, you would filter the cards here
+                // For this example, we'll just show an alert
+                alert('Filtering by: ' + this.textContent);
+            });
+        });
+    });
+</script>
+</body>
+
+</html>
